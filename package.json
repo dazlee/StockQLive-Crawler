@@ -1,0 +1,17 @@
+{
+  "name": "stockq-live-crawler",
+  "version": "0.0.1",
+  "description": "data crawler for stock q live",
+  "main": "index.js",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "mongoose": "^4.4.17",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bryan Lee",
+  "license": "ISC"
+}
