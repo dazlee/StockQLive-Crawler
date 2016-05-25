@@ -81,6 +81,7 @@ function saveSubject (attributes) {
 
 // https://www.ptt.cc/bbs/Stock/index.html
 var count = 10;
+var startPrev = 3026;
 var subjectRegex = /^\[標的\].*/;
 function crawPTTStock (url) {
     sendRequest(url, function (error, r, content) {
@@ -92,7 +93,7 @@ function crawPTTStock (url) {
         const $ = cheerio.load(content);
         const pagingButtons = $('div.btn-group-paging .btn');
         const prevBtn = $(pagingButtons[1]);
-        const prevLink = prevBtn.attr('href');
+        //const prevLink = prevBtn.attr('href');
         const list = $("div.r-list-container .r-ent");
         for (let i = 0; i < list.length; i++) {
             const item = list[i];
@@ -114,7 +115,9 @@ function crawPTTStock (url) {
 
         count--;
         if (count > 0) {
+            const prevLink = `/bbs/Stock/index${startPrev}.html`;
             crawPTTStock(domain + prevLink);
+            startPrev--;
         }
     });
 }
