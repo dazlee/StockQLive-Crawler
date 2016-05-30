@@ -79,12 +79,12 @@ function saveSubject (attributes) {
             console.log("failed to save", error);
             return;
         }
-        console.log("successful to save");
+        console.log("successful to save", attributes.name);
     });
 }
 
 // https://www.ptt.cc/bbs/Stock/index.html
-var count = 10;
+var count = 50;
 var startPrev = 3026;
 var subjectRegex = /^\[標的\].*/;
 function crawPTTStock (url) {
@@ -122,6 +122,8 @@ function crawPTTStock (url) {
             const prevLink = `/bbs/Stock/index${startPrev}.html`;
             crawPTTStock(domain + prevLink);
             startPrev--;
+        } else {
+             process.exit();
         }
     });
 }
